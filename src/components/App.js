@@ -18,12 +18,8 @@ import { connect } from 'react-redux';
 
 class App extends React.Component {
 
-  componentWillMount(){
-    this.props.dispatch(changeUser('Jimmy',48));
-  }
-
   changeUser(){
-    this.props.dispatch(requestUser());
+    this.props.dispatch(requestUser(Math.floor(Math.random() * 12) + 1));
   }
 
   handleChange(e) {
@@ -34,11 +30,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.changeUser.bind(this)}>Get George</button>
+        <button onClick={this.changeUser.bind(this)}>Random Name</button>
         <Name name={this.props.user.name}/>
         <Age age={this.props.user.age}/>
-        <input value={this.props.title} onChange={this.handleChange.bind(this)} />
-        <Link to='/page'>Page</Link>
+        <label htmlFor='age'>Change Age: </label>
+        <input name="age" value={this.props.user.age} onChange={this.handleChange.bind(this)} />
+        <div>
+          <Link to='/page'>Go to /Page for sibling component that receives state</Link>
+        </div>
       </div>
     );
   }

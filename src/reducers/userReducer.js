@@ -1,7 +1,7 @@
 
 const initalUserState = {
-     name: null,
-     age: null
+     name: "Jimmy",
+     age: 48
 } 
 
 export default function reducer(state=initalUserState, action){
